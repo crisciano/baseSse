@@ -23,7 +23,7 @@ npm start
 
 ## ENV
 
-File env in `src/config` example
+File env in `src/config` example, file name `env.js`
 
 ```javascript
 module.exports = {
