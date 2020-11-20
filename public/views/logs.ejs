@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Logs</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://asd-view.herokuapp.com/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+      <h1>Logs</h1>
+
+
+      <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>arquivos de log</th>
+                    <th>última modificação</th>
+                </tr>
+            </thead>
+            <tbody style="font-size:12px;">
+                <%for (var i=0; i<files.length; i++) {%>
+                    <tr style="color:rgb(248, 79, 0);text-shadow: black 0px 0.4px 0px" >
+                        <td><a href='?path=<%= files[i].contextPath %>/<%= files[i].filename %>'><%= files[i].contextPath %>/<%= files[i].filename %></a></td>
+                        <td><%= files[i].lastmodified %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        
+      <table style="table-layout: fixed; word-wrap: break-word;" class="table table-condensed" id="dataTables-erros">
+            
+          <thead>
+              <tr>
+                  <th></th>
+                  <th width="5%;"></th>
+                  <th width="50%;">Mensagem</th>
+                  <th>JSON</th>
+              </tr>
+          </thead>
+          <tbody style="font-size:12px;">
+
+              <%for (var i=0; i<lines.length; i++) {%>
+                <% if (lines[i].split('&&').length == 1) { %>
+                  <tr style="color:rgb(248, 79, 0);text-shadow: black 0px 0.4px 0px" >
+                      <td>-</td>
+                      <td>-</td>
+                      <td><%= lines[i] %></td>
+                      <td></td>
+                  </tr>
+                <% } else { %>
+                  <tr style="color:rgb(0, 207, 62);text-shadow: black 0px 0.4px 0px" >
+                     <td>-</td>
+                     <td>-</td>
+                     <td><%= lines[i].split('&&')[0] %></td>
+                      <% if (lines[i].split('&&')[1] !== undefined) { %>
+                          <td><textarea cols=50 rows=3 readonly><%= lines[i].split('&&')[1] %></textarea></td>
+                      <% } else { %>
+                          <td></td>
+                      <% } %>
+                  </tr>
+                <% } %>
+            <% } %>
+            </tbody>
+      </table>
+  </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://asd-view.herokuapp.com/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://asd-view.herokuapp.com/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="https://asd-view.herokuapp.com/vendor/metisMenu/metisMenu.min.js"></script>
+
+
+</body>
+</html>

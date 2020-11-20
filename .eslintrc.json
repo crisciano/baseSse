@@ -1,0 +1,18 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2020": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "plugins": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 11
+    },
+    "rules": {}
+}
