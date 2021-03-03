@@ -37,3 +37,23 @@ module.exports = {
   },
 };
 ```
+
+## package.json
+
+Alter `publicUrls`
+
+```javascript
+publicUrls: [
+  "/ccstorex/custom/v1/products",
+  "/ccstorex/custom/v1/products/test",
+  "/ccstorex/custom/v1/products/logs",
+];
+```
+
+## base router
+
+Alter base router in `app.js`, include new base router
+
+```javascript
+app.use("/v1/products", ProductsRoutes);
+```

@@ -9,8 +9,9 @@ router.get('/', async (req, res) => {
     const products = await ProductsController.getProducts(req.query, req.headers)
     res.status(200).json(products)
   } catch (err) {
+    const statusCode = err.response.status
     logger.error('Received Error of webhook &&' + JSON.stringify(err))
-    res.status(500).json({ success: false, message: 'Manual Review Failed', err })
+    res.status(statusCode).json({ success: false, message: 'Manual Review Failed', err })
   }
 })
 
@@ -19,8 +20,9 @@ router.get('/recommendations', async (req, res) => {
     const products = await ProductsController.getProductsRecommentations(req.headers)
     res.status(200).json(products)
   } catch (err) {
+    const statusCode = err.response.status
     logger.error('Received Error of webhook &&' + JSON.stringify(err))
-    res.status(500).json({ success: false, message: 'Manual Review Failed', err })
+    res.status(statusCode).json({ success: false, message: 'Manual Review Failed', err })
   }
 })
 
