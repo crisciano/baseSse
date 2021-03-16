@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const ProductsController = require('../controllers/ProductsController')
 const { logger } = require('../utils/logger')
-const { loadLogs } = require('../routes/logsRouter')
+const { loadLogs } = require('./logsRouter')
 
 router.get('/', async (req, res) => {
   try {

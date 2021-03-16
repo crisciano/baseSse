@@ -2,8 +2,10 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const ProductsRoutes = require('./routes/ProductsRoutes')
 const path = require('path')
+
+const ProductsRouter = require('./routes/ProductsRouter')
+const HealthRouter = require('./routes/HealthRouter')
 
 var app = express()
 
@@ -12,6 +14,8 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/v1/products', ProductsRoutes)
+
+app.use('/v1/healthCheck/systemInformation', HealthRouter)
+app.use('/v1/products', ProductsRouter)
 
 module.exports = app
