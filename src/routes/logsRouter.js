@@ -74,14 +74,15 @@ exports.loadLogs = (req, res) => {
         })
       }).catch(error => {
         logger.error('LogsRouter: - ' + error)
-        res.status(500).json('Error')
+        res.status(500).json('Error' + error)
       })
     } else {
-      res.render('../public/views/logs', { lines: ['- && - && LOG BASEADO EM ARQUIVO DESATIVADO'], files: [] })
+      res.render( path.resolve(__dirname + '/public/views/logs'), { lines: ['- && - && LOG BASEADO EM ARQUIVO DESATIVADO'], files: [] })
+      // res.render('../public/views/logs', { lines: ['- && - && LOG BASEADO EM ARQUIVO DESATIVADO'], files: [] })
     }
   } catch (error) {
     logger.error('LogsRouter: - ' + error)
-    res.status(500).json('Error')
+    res.status(500).json('Error' + error)
   }
 }
 
