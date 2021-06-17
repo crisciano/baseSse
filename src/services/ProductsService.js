@@ -14,6 +14,7 @@ class ProductsService {
    *
    * @param {String} token
    * @param {Object} query
+   * @returns promise
    */
   async searchProducts (query, headers) {
     return new Promise((resolve, reject) => {
@@ -31,11 +32,11 @@ class ProductsService {
         axios(options)
           .then(res => resolve(res.data))
           .catch(err => {
-            logger.error(genericError('searchProducts - axios', err))
+            global.occ.logger.error(genericError('searchProducts - axios', err))
             reject(err)
           })
       } catch (err) {
-        logger.error(genericError('searchProducts', err))
+        global.occ.logger.error(genericError('searchProducts', err))
         reject(err)
       }
     })
@@ -63,11 +64,11 @@ class ProductsService {
         axios(options)
           .then(res => resolve(res.data.items))
           .catch(err => {
-            logger.error(genericError('getProduct - axios', err))
+            global.occ.logger.error(genericError('getProduct - axios', err))
             reject(err)
           })
       } catch (err) {
-        logger.error(genericError('getProduct', err))
+        global.occ.logger.error(genericError('getProduct', err))
         reject(err)
       }
     })
@@ -94,11 +95,11 @@ class ProductsService {
           .then(res => resolve(res.data.items))
           .catch(err => {
             // console.error(err);
-            logger.error(genericError('getStockProducts - axios', err))
+            global.occ.logger.error(genericError('getStockProducts - axios', err))
             reject(err)
           })
       } catch (err) {
-        logger.error(genericError('getStockProducts', err))
+        global.occ.logger.error(genericError('getStockProducts', err))
         reject(err)
       }
     })

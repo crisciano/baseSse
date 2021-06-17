@@ -73,7 +73,7 @@ exports.loadLogs = (req, res) => {
           }
         })
       }).catch(error => {
-        logger.error('LogsRouter: - ' + error)
+        global.occ.logger.error('LogsRouter: - ' + error)
         res.status(500).json('Error' + error)
       })
     } else {
@@ -81,7 +81,7 @@ exports.loadLogs = (req, res) => {
       // res.render('../public/views/logs', { lines: ['- && - && LOG BASEADO EM ARQUIVO DESATIVADO'], files: [] })
     }
   } catch (error) {
-    logger.error('LogsRouter: - ' + error)
+    global.occ.logger.error('LogsRouter: - ' + error)
     res.status(500).json('Error' + error)
   }
 }

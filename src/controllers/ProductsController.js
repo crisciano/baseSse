@@ -53,8 +53,8 @@ class ProductsController {
 
         resolve(productList.getProductList() || [])
       } catch (err) {
-        console.log('getProduts controller', err)
-        logger.error(genericError('getProducts controller', err))
+        global.occ.logger.info('getProduts controller', err)
+        global.occ.logger.error(genericError('getProducts controller', err))
         return reject(err)
       }
     })

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     res.status(200).json(products)
   } catch (err) {
     const statusCode = err.response.status
-    logger.error('Received Error of webhook &&' + JSON.stringify(err))
+    global.occ.logger.error('Received Error of webhook &&' + JSON.stringify(err))
     res.status(statusCode).json({ success: false, message: 'Manual Review Failed', err })
   }
 })
@@ -21,7 +21,7 @@ router.get('/recommendations', async (req, res) => {
     res.status(200).json(products)
   } catch (err) {
     const statusCode = err.response.status
-    logger.error('Received Error of webhook &&' + JSON.stringify(err))
+    global.occ.logger.error('Received Error of webhook &&' + JSON.stringify(err))
     res.status(statusCode).json({ success: false, message: 'Manual Review Failed', err })
   }
 })
