@@ -53,7 +53,7 @@ class Helpers {
   sanitizeProducts (obj, productStock, productInfos) {
     const item = obj.records[0].attributes
 
-    // console.log(item)
+    // global.occ.logger.info(item)
 
     // obj product
     const repositoryId = item['product.repositoryId'][0]
@@ -92,7 +92,7 @@ class Helpers {
   }
 
   sanitizeProductsRecommendations (obj, productStock, productInfos) {
-    // console.log(Object.values(obj.salePrices)[0])
+    // global.occ.logger.info(Object.values(obj.salePrices)[0])
     // obj product
     const repositoryId = obj.repositoryId
     const displayName = obj.displayName

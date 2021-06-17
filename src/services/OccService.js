@@ -28,11 +28,11 @@ class OccService {
             resolve(response.data.access_token)
           })
           .catch((err) => {
-            logger.error(genericError('authenticate - axios', err))
+            global.occ.logger.error(genericError('authenticate - axios', err))
             reject(err)
           })
       } catch (err) {
-        logger.error(genericError('authenticate', err))
+        global.occ.logger.error(genericError('authenticate', err))
         reject(err)
       }
     })
@@ -52,11 +52,11 @@ class OccService {
         axios(options)
           .then(res => resolve(res.data.siteSettings.siteSettingsApp))
           .catch((err) => {
-            logger.error(genericError('getSettings - axios', err))
+            global.occ.logger.error(genericError('getSettings - axios', err))
             reject(err)
           })
       } catch (error) {
-        logger.error(genericError('getSettings', error))
+        global.occ.logger.error(genericError('getSettings', error))
         reject(error)
       }
     })
